@@ -1,0 +1,35 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+
+//Log shown only on debug mode.
+#ifdef DEBUG
+#define DLog(fmt, ...) NSLog(fmt, ##__VA_ARGS__);
+#else
+#define DLog(...);
+#endif
+
+// Log always shown(debug and release mode).
+#define ALog(fmt, ...) NSLog(fmt, ##__VA_ARGS__);
+
+
+// Logs for showing the current method.
+// Work only on debug mode.
+#define LOGIN DLog(@"IN %s", __FUNCTION__);
+#define LOGOUT DLog(@"OUT %s", __FUNCTION__);
+
+#define LOGERROR DLog(@"<Error at %@::%@ line: %d>", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], NSStringFromSelector(_cmd), __LINE__);
